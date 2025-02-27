@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="success-container">
+    <!-- Cabeçalho animado -->
+    <div class="success-header">
+        <div class="emoji-animation">
+            <div class="thumbs-up">👍</div>
+            <div class="smile">😊</div>
+        </div>
+        <h1 class="success-title">Cadastro Concluído!</h1>
+        <p class="success-subtitle">Bem-vindo(a) à nossa plataforma!</p>
+    </div>
+
+    <!-- Detalhes da conta -->
+    <div class="success-card">
+        <h2 class="card-title">Sua conta está pronta!</h2>
+        <div class="checklist">
+            <div class="check-item">
+                <span class="check-icon">✓</span>
+                Validação de nome completo
+            </div>
+            <div class="check-item">
+                <span class="check-icon">✓</span>
+                E-mail validado e único
+            </div>
+            <div class="check-item">
+                <span class="check-icon">✓</span>
+                Senha segura (8+ caracteres)
+            </div>
+            <div class="check-item">
+                <span class="check-icon">✓</span>
+                Confirmação de senha
+            </div>
+        </div>
+    </div>
+
+    <!-- Ações -->
+    <div class="success-actions">
+        <a href="{% url 'login' %}" class="btn-login">
+            Acessar Sistema 🚀
+            <div class="hover-effect"></div>
+        </a>
+        <p class="email-notice">
+            <i class="fas fa-envelope"></i>
+            Enviamos um e-mail de confirmação para sua caixa de entrada
+        </p>
+    </div>
+</div>
+{% endblock %}

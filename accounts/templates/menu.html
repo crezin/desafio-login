@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="success-container">
+    <div class="emoji-animation">
+        <div class="thumbs-up">😊</div>
+    </div>
+    <h1 class="success-title">Bem-vindo à Fidelity!</h1>
+    
+    <div class="success-actions">
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn-login">
+                Sair do Sistema
+                <div class="hover-effect"></div>
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

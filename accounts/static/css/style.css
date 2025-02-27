@@ -1,0 +1,548 @@
+:root {
+    --black: #000000;
+    --green-primary: #00ff88;
+    --green-dark: #006633;
+    --green-glow: rgba(0, 255, 136, 0.3);
+    --green-reflex: rgba(0, 255, 136, 0.1);
+}
+
+body {
+    background-color: var(--black);
+    color: var(--green-primary);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.auth-container {
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid var(--green-primary);
+    border-radius: 12px;
+    padding: 2rem;
+    width: 400px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px var(--green-glow);
+}
+
+.auth-container:hover {
+    box-shadow: 0 0 25px var(--green-primary);
+    transform: translateY(-5px);
+}
+
+.input-field {
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    border: 1px solid var(--green-dark);
+    color: var(--green-primary);
+    border-radius: 100px;
+    margin: 23px -10px 10px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.input-field::placeholder {
+    color: #555;
+    opacity: 1;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--green-primary);
+    box-shadow: 0 0 15px var(--green-glow);
+}
+
+/* Efeito de reflexo na borda */
+.input-field::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, var(--green-reflex), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.input-field:focus::after {
+    opacity: 1;
+}
+
+.input-field:hover {
+    border-color: var(--green-primary);
+    box-shadow: 0 0 15px var(--green-glow);
+}
+
+.btn-primary {
+    background: var(--green-primary);
+    color: var(--black);
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.btn-primary:hover {
+    background: #00cc6a;
+    box-shadow: 0 0 20px var(--green-primary);
+    transform: scale(1.02);
+}
+
+.password-toggle {
+    pointer-events: auto !important;
+    z-index: 2;
+    position: absolute;
+    right: -15px;
+    top: -8%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--green-dark);
+    transition: color 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.password-toggle:hover {
+    color: var(--green-primary);
+}
+
+.text-green {
+    margin-top: 15px;
+    color: var(--green-primary);
+    transition: opacity 0.3s ease;
+    position: relative; /* Necessário para posicionar a linha */
+    text-decoration: none; /* Remove sublinhado padrão */
+    display: inline-block; /* Garante que o pseudo-elemento funcione corretamente */
+}
+
+.text-green:hover {
+    opacity: 0.8;
+    text-shadow: 0 0 10px var(--green-primary);
+}
+
+/* Linha animada */
+.text-green::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px; /* Posiciona a linha abaixo do texto */
+    width: 0; /* Começa com largura zero */
+    height: 2px; /* Espessura da linha */
+    background-color: var(--green-primary); /* Cor da linha */
+    transition: width 0.5s ease; /* Animação suave */
+}
+
+/* Animação ao passar o mouse */
+.text-green:hover::after {
+    width: 100%; /* Expande a linha até 100% */
+}
+
+/* Animação de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.auth-container {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Efeito de reflexo no container */
+.auth-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, var(--green-reflex), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.auth-container:hover::before {
+    opacity: 0.3;
+}
+.password-rules {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(0, 255, 136, 0.1);
+    border-radius: 8px;
+}
+
+.rules-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0.5rem 0;
+}
+
+.rule-item {
+    font-size: 0.9rem;
+    color: var(--green-primary);
+    margin: 0.3rem 0;
+}
+
+.rule-item::before {
+    content: '•';
+    margin-right: 0.5rem;
+}
+/* Animação dos emojis */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.emoji-animation div {
+    display: inline-block;
+    font-size: 3em;
+    animation: bounce 1s infinite;
+}
+
+.thumbs-up { animation-delay: 0.2s; }
+.smile { animation-delay: 0.5s; }
+
+.success-container {
+    text-align: center;
+    padding: 40px;
+}
+.password-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+    cursor: pointer;
+    color: var(--green-primary);
+    transition: all 0.3s ease;
+}
+
+#toggle-passwords {
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.toggle-label {
+    font-size: 0.9em;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.password-toggle-container:hover {
+    opacity: 0.9;
+    text-shadow: 0 0 15px var(--green-glow);
+}
+
+.password-input-container {
+    position: relative;
+    transition: transform 0.3s ease;
+}
+/* Container principal */
+.success-container {
+    max-width: 600px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 0 30px var(--green-glow);
+    border: 1px solid var(--green-primary);
+}
+
+/* Animação dos emojis */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+.emoji-animation {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.thumbs-up, .smile {
+    font-size: 3.5rem;
+    animation: float 2s ease-in-out infinite;
+}
+
+.smile {
+    animation-delay: 0.5s;
+}
+
+/* Títulos */
+.success-title {
+    color: var(--green-primary);
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.success-subtitle {
+    color: #fff;
+    text-align: center;
+    opacity: 0.8;
+}
+
+/* Card de detalhes */
+.success-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+    border: 1px solid var(--green-dark);
+}
+
+.checklist {
+    display: grid;
+    gap: 1rem;
+}
+
+.check-item {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem;
+    background: rgba(0, 255, 136, 0.05);
+    border-radius: 5px;
+}
+
+.check-icon {
+    color: var(--green-primary);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Botão de login */
+.btn-login {
+    display: inline-block;
+    background: var(--green-primary);
+    color: #000;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.hover-effect {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+    pointer-events: none;
+}
+
+.btn-login:hover .hover-effect {
+    top: 50%;
+    left: 50%;
+}
+
+/* Notificação de e-mail */
+.email-notice {
+    color: var(--green-primary);
+    text-align: center;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    opacity: 0.8;
+}/* Mensagens de erro/sucesso */
+.messages {
+    margin-bottom: 1.5rem;
+}
+
+.alert {
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    font-size: 0.9em;
+}
+
+
+.alert-success {
+    background: rgba(0, 255, 136, 0.1);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    color: var(--green-primary);
+}
+
+/* Botão de Cancelar */
+.btn-cancelar {
+    display: inline-block;
+    background: transparent;
+    color: var(--green-primary);
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--green-primary);
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    margin-left: 1rem;
+}
+
+.btn-cancelar:hover {
+    background: rgba(0, 255, 136, 0.1);
+}
+/* Menu específico */
+.menu-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 3rem;
+    text-align: center;
+}
+
+.logout-btn {
+    background: transparent;
+    border: 2px solid var(--green-primary);
+    color: var(--green-primary);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.logout-btn:hover {
+    background: var(--green-reflex);
+    transform: scale(1.05);
+}
+
+.welcome-message {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 15px var(--green-glow);
+}
+/* Estilos para os novos elementos */
+.input-container {
+    position: relative;
+    margin: 1.5rem 0;
+}
+
+.input-icon {
+    position: absolute;
+    left: -23px;
+    top: 58%;
+    transform: translateY(-50%);
+    color: var(--green-dark);
+    transition: all 0.3s ease;
+    font-size: 0.5rem;
+}
+
+.input-field {
+    padding-left: 10px !important;
+
+}
+
+.input-field:focus + .input-icon {
+    color: var(--green-primary);
+    text-shadow: 0 0 15px var(--green-glow);
+}
+
+.auth-links {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.forgot-password {
+    order: -1;
+    margin-bottom: 1rem;
+}
+
+/* Animação para o ícone de seta */
+.btn-primary i {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-primary:hover i {
+    transform: translateX(5px);
+}
+/* Estilos para mensagens de erro */
+.error-message {
+    color: #ff4444;
+    font-size: 0.9em;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background: rgba(255, 68, 68, 0.1);
+    border: 1px solid #ff4444;
+    animation: shake 0.3s ease-in-out;
+}
+
+/* Animação de erro */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Campos inválidos */
+.input-field.is-invalid {
+    border-color: #ff4444 !important;
+    box-shadow: 0 0 15px rgba(255, 68, 68, 0.3);
+}
+
+.input-field.is-invalid:focus {
+    box-shadow: 0 0 20px rgba(255, 68, 68, 0.5);
+}
+
+/* Ícones para campos inválidos */
+.input-field.is-invalid + .input-icon {
+    color: #ff4444;
+    text-shadow: 0 0 15px rgba(255, 68, 68, 0.5);
+}
+
+/* Mensagens de erro globais */
+.alert-error {
+    background: rgba(255, 68, 68, 0.15) !important;
+    border: 2px solid #ff4444 !important;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 20px rgba(255, 68, 68, 0.2);
+}
+
+/* Lista de erros */
+.validation-message.invalid-feedback {
+    color: #ff6666;
+    font-size: 0.85em;
+    margin-top: 0.5rem;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.validation-message.invalid-feedback::before {
+    content: '⚠';
+    margin-right: 0.5rem;
+    filter: drop-shadow(0 0 4px rgba(255, 68, 68, 0.5));
+}
+
+/* Efeito de transição suave */
+.input-field, .alert {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
